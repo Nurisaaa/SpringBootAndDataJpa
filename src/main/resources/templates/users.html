@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<table th:each="user:${users}">
+    <tr>
+        <th th:text="${user.getUsername()}" ></th>
+        <th th:text="${user.getEmail()}"></th>
+        <th th:text="${user.getAge()}"></th>
+        <th><a th:href="@{/api/cars/{userId}(userId=${user.id})}">cars</a></th>
+        <th>
+            <form th:action="@{/api/users/assign/{userId}(userId=${user.id})}" method="post">
+                <label>
+                    <select name="carId">
+                        <option th:each="car :${cars}" th:value="${car.id}" th:text="${car.getBrand()}">
+                        </option>
+                    </select>
+                </label>
+                <button type="submit">submit</button>
+            </form>
+        </th>
+    </tr>
+</table>
+</body>
+</html>

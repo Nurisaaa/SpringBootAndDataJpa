@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Post</title>
+</head>
+<body>
+<form th:action="@{/post/{userId}/save(userId=${userId})}"
+      th:object="${newPost}" th:method="POST">
+    <p>
+        <label>Title</label>
+        <input type="text" th:field="*{title}">
+    </p>
+    <p>
+        <label>Description</label>
+        <input type="text" th:field="*{description}">
+    </p>
+    <p>
+        <label>Image</label>
+        <input type="text" th:field="*{image}">
+    </p>
+    <p>
+        <button type="submit" class="btn btn-primary">Save Post</button>
+    </p>
+</form>
+</body>
+</html>
